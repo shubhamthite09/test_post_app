@@ -42,7 +42,7 @@ userRouter.post("/log",async(req,res)=>{
                 const refresh_token = jwt.sign({id:isPresent._id,role:isPresent.role},process.env.refresh_key,{expiresIn:"1m"})
                 res.cookie("token",token,{maxAge:1000*35})
                 res.cookie("refresh_token",refresh_token,{maxAge:1000*200})
-                res.status(202).send({msg:`login done`})
+                res.status(202).send({msg:`login done`,token,refresh_token})
             }
         }
     }catch(err){
