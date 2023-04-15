@@ -7,15 +7,12 @@ const {userRouter } = require("./routes/userRoute")
 const {postRouter } = require("./routes/postRoutes")
 const {validator } = require("./middleware/tokenValidator")
 
-const corsOption={
-    credentials:true,
-    origin: 'http://127.0.0.1:5501',
-}
+
 
 const app= express();
 app.use(express.json())
 
-app.use(cors(corsOption))
+app.use(cors())
 app.use(cookie_parsre())
 
 app.use("/user",userRouter)
