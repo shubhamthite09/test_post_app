@@ -82,7 +82,7 @@ userRouter.get(
                 const refresh_token = jwt.sign({id:isPresent._id,role:isPresent.role},process.env.refresh_key,{expiresIn:"1m"})
                 res.cookie("token",token,{maxAge:1000*35})
                 res.cookie("refresh_token",refresh_token,{maxAge:1000*69})
-                res.status(202).send({msg:`login done`})
+                res.redirect('http://127.0.0.1:5501/node/frent/post.html')
       } else {
         req.user.password = bcrypt.hashSync(req.user.password, 2);
         const user = new userModle(req.user);
@@ -92,7 +92,7 @@ userRouter.get(
                 const refresh_token = jwt.sign({id:isPresent._id,role:isPresent.role},process.env.refresh_key,{expiresIn:"1m"})
                 res.cookie("token",token,{maxAge:1000*35})
                 res.cookie("refresh_token",refresh_token,{maxAge:1000*69})
-                res.status(202).send({msg:`login done`})
+                res.redirect('http://127.0.0.1:5501/node/frent/post.html')
       }
     }
   );
