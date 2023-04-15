@@ -83,6 +83,7 @@ userRouter.get(
                 res.cookie("token",token,{maxAge:1000*35})
                 res.cookie("refresh_token",refresh_token,{maxAge:1000*69})
                 res.redirect('http://127.0.0.1:5501/node/frent/post.html')
+                res.send("ok")
       } else {
         req.user.password = bcrypt.hashSync(req.user.password, 2);
         const user = new userModle(req.user);
@@ -93,6 +94,7 @@ userRouter.get(
                 res.cookie("token",token,{maxAge:1000*35})
                 res.cookie("refresh_token",refresh_token,{maxAge:1000*69})
                 res.redirect('http://127.0.0.1:5501/node/frent/post.html')
+                res.send("ok")
       }
     }
   );
