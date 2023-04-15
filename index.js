@@ -8,12 +8,12 @@ const {postRouter } = require("./routes/postRoutes")
 const {validator } = require("./middleware/tokenValidator")
 
 const corsOption={
-    credentials=true
+    credentials:true
 }
 
 const app= express();
 app.use(express.json())
-app.use(cors())
+
 app.use(cors(corsOption))
 app.use(cookie_parsre())
 
