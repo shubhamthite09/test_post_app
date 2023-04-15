@@ -8,7 +8,8 @@ const {postRouter } = require("./routes/postRoutes")
 const {validator } = require("./middleware/tokenValidator")
 
 const corsOption={
-    credentials:true
+    credentials:true,
+    origin: 'http://127.0.0.1:5501/node/frent/signup.html',
 }
 
 const app= express();
