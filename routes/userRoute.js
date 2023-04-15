@@ -11,6 +11,7 @@ const userRouter = Router()
 
 userRouter.post("/reg",async(req,res)=>{
     try{
+        console.log("enter in reg")
         const {email} = req.body
         const isPresent = await userModle.findOne({email})
         if(isPresent){
@@ -22,7 +23,7 @@ userRouter.post("/reg",async(req,res)=>{
             res.status(202).send({msg:`User created done.`})
         }
     }catch(err){
-        res.status(505).send({msg:`internal`})
+        res.status(505).send({msg:`internal`,err:err.message})
     }
 })
 
