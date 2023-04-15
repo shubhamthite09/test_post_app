@@ -9,7 +9,7 @@ const {validator } = require("./middleware/tokenValidator")
 
 const corsOption={
     credentials:true,
-    origin: 'http://127.0.0.1:5501/node/frent/signup.html',
+    origin: 'http://127.0.0.1:5501',
 }
 
 const app= express();
