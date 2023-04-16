@@ -4,16 +4,18 @@ const fs = require("fs");
 const {blackModle} = require("../modles/blacklist");
 
 const validator = (req, res, next) => {
-  jwt.verify(req.cookies.token, process.env.token_key, (err, decoded) => {
+  const token = req.cookies.token || req.headers.authorization.token
+  const refresh_token = req.cookies.refresh_token || req.headers.authorization.refresh_token
+  jwt.verify(token, process.env.token_key, (err, decoded) => {
     if (err) {
-      if (req.cookies.refresh_token) {
-        jwt.verify(req.cookies.refresh_token, process.env.refresh_key, async (err, decoded) => {
+      if (refresh_token) {
+        jwt.verify(refresh_token, process.env.refresh_key, async (err, decoded) => {
           if (err) {
             res
               .status(401)
               .json({ error: `please login again your token is not valid` });
           } else {
-            if (await blackModle.findOne({ token:req.cookies.refresh_token })) {
+            if (await blackModle.findOne({ token:refresh_token })) {
               res
                 .status(403)
                 .json({ error: `please login you are in blacklist` });
