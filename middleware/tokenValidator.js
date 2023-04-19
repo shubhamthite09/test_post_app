@@ -6,6 +6,7 @@ const {blackModle} = require("../modles/blacklist");
 const validator = (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization.token
   const refresh_token = req.cookies.refresh_token || req.headers.authorization.refresh_token
+  console.log(token,refresh_token)
   jwt.verify(token, process.env.token_key, (err, decoded) => {
     if (err) {
       if (refresh_token) {
