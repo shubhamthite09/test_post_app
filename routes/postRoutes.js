@@ -18,6 +18,7 @@ postRouter.post("/new",async(req,res)=>{
 postRouter.get("/all",async(req,res)=>{
     try{
             let all = await postModle.find({user:req.body.user})
+            console.log(all)
             res.status(202).send(all)
     }catch(err){
         res.status(505).send({msg:`internal`})
