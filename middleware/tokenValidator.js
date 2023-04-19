@@ -4,7 +4,7 @@ const fs = require("fs");
 const {blackModle} = require("../modles/blacklist");
 
 const validator = (req, res, next) => {
-  console.log(req.cookies)
+  console.log(req.cookies);
 };
 
 const authorization = (req, res, next) => {
