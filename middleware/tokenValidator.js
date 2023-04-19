@@ -4,10 +4,11 @@ const fs = require("fs");
 const {blackModle} = require("../modles/blacklist");
 
 const validator = (req, res, next) => {
-  const token = req.cookies.token || req.headers.authorization.token
-  const refresh_token = req.cookies.refresh_token || req.headers.authorization.refresh_token
-  console.log(token,refresh_token)
-  jwt.verify(token, process.env.token_key, (err, decoded) => {
+  console.log(req.cookies)
+  //const token = req.cookies.token || req.headers.authorization.token
+  //const refresh_token = req.cookies.refresh_token || req.headers.authorization.refresh_token
+  //console.log(token,refresh_token)
+  //jwt.verify(token, process.env.token_key, (err, decoded) => {
     if (err) {
       if (refresh_token) {
         jwt.verify(refresh_token, process.env.refresh_key, async (err, decoded) => {
@@ -43,7 +44,7 @@ const validator = (req, res, next) => {
       req.body.role = decoded.role;
       next();
     }
-  });
+ // });
 };
 
 const authorization = (req, res, next) => {
